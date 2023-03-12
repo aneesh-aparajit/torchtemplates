@@ -12,7 +12,7 @@ long_description = (this_directory / "pypi_readme.md").read_text()
 
 setup(
     name="torchtemplates",
-    version='1.0.3', 
+    version='1.0.4', 
     description="A package to create pytorch projects quickly",
     author="Aneesh Aparajit G",
     author_email="aneeshaparajit.g2002@gmail.com",
@@ -31,4 +31,5 @@ setup(
         'Intended Audience :: Developers',
         'Programming Language :: Python :: 3'
     ],
+    include_package_data=True,
 )
