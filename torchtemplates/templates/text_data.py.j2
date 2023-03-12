@@ -1,0 +1,35 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.utils.data import DataLoader, Dataset
+import transformers
+import pandas as pd
+from typing import Dict
+
+
+class TextDataset(Dataset):
+    '''Dataset class for text data from tabular data for Classification'''
+    def __init__(self, df: pd.DataFrame, tokenizer: str, pretrained_weights: str) -> None:
+        '''Constructor for TextDatasetForClassification
+        
+        Args:
+        ----
+        - df: pd.DataFrame
+            - The dataframe containing the required columns.
+        - tokenizer: str
+            - The name of the tokenizer you want to use
+        - pretrained_weights: str
+            - The pretrained weights you want to use
+        '''
+        super(TextDataset, self).__init__()
+        self.df = df
+        self.tokenizer = getattr(transformers, tokenizer)
+        self.tokenizer = self.tokenizer.from_pretrained(pretrained_weights)
+        # Write extra logic if needed
+        
+    def __len__(self) -> int:
+        return len(self.df)
+    
+    def __getitem__(self, ix: int) -> Dict[str, torch.Tensor]:
+        # Implement the __getitem__ logic here
+        pass

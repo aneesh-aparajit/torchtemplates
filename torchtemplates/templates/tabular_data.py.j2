@@ -1,0 +1,20 @@
+import torch
+from torch.utils.data import DataLoader, Dataset
+
+class TabularDataset(Dataset):
+    def __init__(self, X: np.ndarray, y: np.ndarray) -> None:
+        super(TabularDataset, self).__init__()
+        self.X = X
+        self.y = y
+    
+    def __len__(self) -> int:
+        return self.X.shape[0]
+    
+    def __getitem__(self, ix: int) -> Dict[str, torch.Tensor]:
+        X = self.X[ix]
+        y = self.y[ix]
+        
+        return {
+            'X': torch.Tensor(X, dtype=torch.float32),
+            'y': torch.Tensor(y, dtype=torch.float32)
+        }

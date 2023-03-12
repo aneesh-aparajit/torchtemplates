@@ -8,3 +8,5 @@ jinja2
 wandb
 transformers
 rich
+optuna
+tqdm
