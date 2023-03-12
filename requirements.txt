@@ -5,4 +5,6 @@ pandas
 matplotlib
 click
 jinja2
+wandb
 transformers
+rich
