@@ -20,5 +20,10 @@ setup(
         'console_scripts': [
             'torchtemplates=torchtemplates.torchtemplates:torchtemplates',
         ]
-    }
+    }, 
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'Programming Language :: Python :: 3'
+    ],
 )
