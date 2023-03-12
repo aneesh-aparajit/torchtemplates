@@ -1,0 +1,8 @@
+torch
+albumentations
+numpy
+pandas
+matplotlib
+click
+jinja2
+transformers
