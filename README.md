@@ -6,14 +6,14 @@
 - TODO:
     - Add jinja templates for the `dataloaders`, `training loops` and the `models`.
 
-File structure
+## File structure
 ```
 - src
     - config
         - config.py
     - project_name
         - main.py
-        - data.py
+        - dataset.py
         - model.py
         - train.py
         - utils.py
@@ -21,3 +21,14 @@ File structure
     - README.md
     - requirements.txt
 ```
+
+## How to use?
+
+### What are the functionalities?
+![help](./images/help.png)
+
+### Commands
+![commands](./images/commands.png)
+
+### Final Tree
+![tree](./images/tree.png)

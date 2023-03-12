@@ -7,6 +7,8 @@ BASE_DIR = Path(__file__).parent
 with open(Path(BASE_DIR, "requirements.txt"), "r") as file:
     required_packages = [ln.strip() for ln in file.readlines()]
 
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="torchtemplates",
@@ -14,6 +16,8 @@ setup(
     description="A package to create pytorch projects quickly",
     author="Aneesh Aparajit G",
     author_email="aneeshaparajit.g2002@gmail.com",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     install_requires=[required_packages],
     packages=find_namespace_packages(), 
     entry_points={
