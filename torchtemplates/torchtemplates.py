@@ -13,12 +13,9 @@ logger.handlers = [RichHandler(markup=True)]
 def torchtemplates():
     pass
 
-PROJECT_FOLDER = None
-
 @torchtemplates.command()
 def init():
     project_name = input('project name: ')
-    PROJECT_FOLDER = project_name
     output_dir   = os.getcwd()
     version      = input('version: ')
     description  = input('description: ')
@@ -93,7 +90,9 @@ def init():
 
 @torchtemplates.command()
 @click.argument('datatype')
-def new_pipeline(datatype: str):
+@click.argument('projectname')
+def new_pipeline(datatype: str, projectname: str):
+    PROJECT_FOLDER = projectname
     if datatype not in ['text', 'tabular', 'image']:
         raise NotImplementedError(f"Datasets for {datatype} has not been implemented... Try implementing from ['text', 'tabular', 'image']")
 

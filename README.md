@@ -17,6 +17,7 @@ File structure
         - model.py
         - train.py
         - utils.py
+        - hyparam.py (need to add...)
     - README.md
     - requirements.txt
 ```
