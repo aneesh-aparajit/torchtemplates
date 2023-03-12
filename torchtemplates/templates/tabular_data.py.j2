@@ -1,5 +1,7 @@
 import torch
 from torch.utils.data import DataLoader, Dataset
+from testing.config import config
+
 
 class TabularDataset(Dataset):
     def __init__(self, X: np.ndarray, y: np.ndarray) -> None:
