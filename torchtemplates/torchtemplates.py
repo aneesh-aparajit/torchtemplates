@@ -17,7 +17,7 @@ def torchtemplates():
 def init():
     project_name = input('project name: ')
     output_dir   = os.getcwd()
-    version      = input('version: ')
+    version      = str(input('version: '))
     description  = input('description: ')
     git_repo     = input('git repository: ')
     keywords     = input('keywords: ')
