@@ -20,8 +20,7 @@ def torchtemplates():
 @torchtemplates.command()
 def init():
     project_name = input('project name: ')
-    output_dir   = input('output directory: ')
-    output_dir = os.path.join(os.path.expanduser('~'), output_dir)
+    output_dir   = os.getcwd()
     version      = input('version: ')
     description  = input('description: ')
     git_repo     = input('git repository: ')
