@@ -1,10 +1,7 @@
 import click
-import shutil
 import os
 import json
-from pathlib import Path
-from jinja2 import Environment, FileSystemLoader, PackageLoader
-from torchtemplates.console import console
+from jinja2 import Environment, PackageLoader
 import logging
 from rich.logging import RichHandler
 
@@ -90,6 +87,12 @@ def init():
         logger.error(f'Something unexpected occured...')
         logger.error(e.__str__)
         return
+    
+
+@torchtemplates.command()
+@click.argument('datatype')
+def new_pipeline(datatype):
+    pass
 
 if __name__ == "__main__":
     torchtemplates()
