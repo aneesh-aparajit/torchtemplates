@@ -5,6 +5,12 @@
 - Till now, this would create a package for you with the `setup.py` and the `requirements.txt`.
 - TODO:
     - Add TODO for hyperparameter tuning.
+    
+## Installation
+https://pypi.org/project/torchtemplates/
+```bash
+pip install torchtemplates
+```
 
 ## File structure
 ```
