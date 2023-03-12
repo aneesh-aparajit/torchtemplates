@@ -62,12 +62,12 @@ def init():
         logger.info('✅ requirements.txt has been created.')
     except Exception as e:
         logger.error(f'Something unexpected occured...')
-        logger.error(e.__str__)
+        logger.error(e)
         return
     
     # Setup.py
     try:
-        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        env = Environment(loader=PackageLoader(__package__, 'templates'))
         template = env.get_template('setup.py.j2')
         rendered_template = template.render(
             project_name=project_name, 
@@ -84,7 +84,7 @@ def init():
         logger.info('✅ setup.py has been created.')
     except Exception as e:
         logger.error(f'Something unexpected occured...')
-        logger.error(e.__str__)
+        logger.error(e)
         return
     
 
@@ -113,7 +113,7 @@ def new_pipeline(datatype: str, projectname: str):
     
     # create config.py
     try: 
-        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        env = Environment(loader=PackageLoader(__package__, 'templates'))
         template = env.get_template('config.py.j2')
         rendered_template = template.render()
 
@@ -124,12 +124,12 @@ def new_pipeline(datatype: str, projectname: str):
 
     except Exception as e:
         logger.error(f'Something unexpected occured...')
-        logger.error(e.__str__)
+        logger.error(e)
         return
     
     # model.py
     try: 
-        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        env = Environment(loader=PackageLoader(__package__, 'templates'))
         template = env.get_template('model.py.j2')
         rendered_template = template.render()
 
@@ -140,12 +140,12 @@ def new_pipeline(datatype: str, projectname: str):
 
     except Exception as e:
         logger.error(f'Something unexpected occured...')
-        logger.error(e.__str__)
+        logger.error(e)
         return
 
     # training.py
     try: 
-        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        env = Environment(loader=PackageLoader(__package__, 'templates'))
         template = env.get_template('training.py.j2')
         rendered_template = template.render()
 
@@ -161,7 +161,7 @@ def new_pipeline(datatype: str, projectname: str):
 
     # dataset.py
     try: 
-        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        env = Environment(loader=PackageLoader(__package__, 'templates'))
         template = env.get_template(f'{datatype}_data.py.j2')
         rendered_template = template.render()
 
@@ -172,12 +172,12 @@ def new_pipeline(datatype: str, projectname: str):
 
     except Exception as e:
         logger.error(f'Something unexpected occured...')
-        logger.error(e.__str__)
+        logger.error(e)
         return
     
     # create_folds.py
     try: 
-        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        env = Environment(loader=PackageLoader(__package__, 'templates'))
         template = env.get_template('create_folds.py.j2')
         rendered_template = template.render()
 
@@ -188,12 +188,12 @@ def new_pipeline(datatype: str, projectname: str):
 
     except Exception as e:
         logger.error(f'Something unexpected occured...')
-        logger.error(e.__str__)
+        logger.error(e)
         return
     
     # utils.py
     try: 
-        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        env = Environment(loader=PackageLoader(__package__, 'templates'))
         template = env.get_template('utils.py.j2')
         rendered_template = template.render()
 
@@ -204,7 +204,7 @@ def new_pipeline(datatype: str, projectname: str):
 
     except Exception as e:
         logger.error(f'Something unexpected occured...')
-        logger.error(e.__str__)
+        logger.error(e)
         return
     
     logger.info(f'✅ {PROJECT_FOLDER} repo has been created.')
