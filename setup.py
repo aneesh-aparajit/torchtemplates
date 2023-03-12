@@ -8,11 +8,11 @@ with open(Path(BASE_DIR, "requirements.txt"), "r") as file:
     required_packages = [ln.strip() for ln in file.readlines()]
 
 this_directory = Path(__file__).parent
-long_description = (this_directory / "README.md").read_text()
+long_description = (this_directory / "pypi_readme.md").read_text()
 
 setup(
     name="torchtemplates",
-    version=0.1, 
+    version=1.0, 
     description="A package to create pytorch projects quickly",
     author="Aneesh Aparajit G",
     author_email="aneeshaparajit.g2002@gmail.com",

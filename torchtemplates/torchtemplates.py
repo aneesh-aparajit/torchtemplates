@@ -32,7 +32,7 @@ def init():
         'authors': authors
     }, indent=4))
 
-    ok = print('Is this OK? (yes)')
+    ok = input('Is this OK? (yes)')
     if ok is not None and ok.lower() == 'no':
         logger.critical('Aborted.')
         return
