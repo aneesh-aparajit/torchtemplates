@@ -13,10 +13,12 @@ logger.handlers = [RichHandler(markup=True)]
 def torchtemplates():
     pass
 
+PROJECT_FOLDER = None
 
 @torchtemplates.command()
 def init():
     project_name = input('project name: ')
+    PROJECT_FOLDER = project_name
     output_dir   = os.getcwd()
     version      = input('version: ')
     description  = input('description: ')
@@ -91,8 +93,123 @@ def init():
 
 @torchtemplates.command()
 @click.argument('datatype')
-def new_pipeline(datatype):
-    pass
+def new_pipeline(datatype: str):
+    if datatype not in ['text', 'tabular', 'image']:
+        raise NotImplementedError(f"Datasets for {datatype} has not been implemented... Try implementing from ['text', 'tabular', 'image']")
+
+    output_dir = os.getcwd()
+    # Create outputdir/PROJECT_FOLDER/config/
+    if os.path.exists(os.path.join(output_dir, PROJECT_FOLDER, 'config/')):
+        logger.error(f'Config folder at {os.path.join(output_dir, PROJECT_FOLDER, "config/")} already exists...')
+        return
+    else:
+        os.mkdir(os.path.join(output_dir, PROJECT_FOLDER, 'config/'))
+
+    # Create outputdir/PROJECT_FOLDER/PROJECT_FOLDER
+    if os.path.exists(os.path.join(output_dir, PROJECT_FOLDER, PROJECT_FOLDER)):
+        logger.error(f'Config folder at {os.path.join(output_dir, PROJECT_FOLDER, PROJECT_FOLDER)} already exists...')
+        return
+    else:
+        os.mkdir(os.path.join(output_dir, PROJECT_FOLDER, PROJECT_FOLDER))
+    
+    # create config.py
+    try: 
+        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        template = env.get_template('config.py.j2')
+        rendered_template = template.render()
+
+        with open(os.path.join(output_dir, PROJECT_FOLDER, 'config', 'config.py'), 'w') as f:
+            f.write(rendered_template)
+        
+        logger.info('✅ config/config.py has been created.')
+
+    except Exception as e:
+        logger.error(f'Something unexpected occured...')
+        logger.error(e.__str__)
+        return
+    
+    # model.py
+    try: 
+        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        template = env.get_template('model.py.j2')
+        rendered_template = template.render()
+
+        with open(os.path.join(output_dir, PROJECT_FOLDER, PROJECT_FOLDER, 'model.py'), 'w') as f:
+            f.write(rendered_template)
+        
+        logger.info(f'✅ {PROJECT_FOLDER}/model.py has been created.')
+
+    except Exception as e:
+        logger.error(f'Something unexpected occured...')
+        logger.error(e.__str__)
+        return
+
+    # training.py
+    try: 
+        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        template = env.get_template('training.py.j2')
+        rendered_template = template.render()
+
+        with open(os.path.join(output_dir, PROJECT_FOLDER, PROJECT_FOLDER, 'training.py'), 'w') as f:
+            f.write(rendered_template)
+        
+        logger.info(f'✅ {PROJECT_FOLDER}/training.py has been created.')
+
+    except Exception as e:
+        logger.error(f'Something unexpected occured...')
+        logger.error(e.__str__)
+        return
+
+    # dataset.py
+    try: 
+        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        template = env.get_template(f'{datatype}_data.py.j2')
+        rendered_template = template.render()
+
+        with open(os.path.join(output_dir, PROJECT_FOLDER, PROJECT_FOLDER, 'dataset.py'), 'w') as f:
+            f.write(rendered_template)
+        
+        logger.info(f'✅ {PROJECT_FOLDER}/dataset.py has been created.')
+
+    except Exception as e:
+        logger.error(f'Something unexpected occured...')
+        logger.error(e.__str__)
+        return
+    
+    # create_folds.py
+    try: 
+        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        template = env.get_template('create_folds.py.j2')
+        rendered_template = template.render()
+
+        with open(os.path.join(output_dir, PROJECT_FOLDER, PROJECT_FOLDER, 'create_folds.py'), 'w') as f:
+            f.write(rendered_template)
+        
+        logger.info(f'✅ {PROJECT_FOLDER}/create_folds.py has been created.')
+
+    except Exception as e:
+        logger.error(f'Something unexpected occured...')
+        logger.error(e.__str__)
+        return
+    
+    # utils.py
+    try: 
+        env = Environment(loader=PackageLoader('torchtemplates', 'templates'))
+        template = env.get_template('utils.py.j2')
+        rendered_template = template.render()
+
+        with open(os.path.join(output_dir, PROJECT_FOLDER, PROJECT_FOLDER, 'utils.py'), 'w') as f:
+            f.write(rendered_template)
+        
+        logger.info(f'✅ {PROJECT_FOLDER}/utils.py has been created.')
+
+    except Exception as e:
+        logger.error(f'Something unexpected occured...')
+        logger.error(e.__str__)
+        return
+    
+    logger.info(f'✅ {PROJECT_FOLDER} repo has been created.')
+
 
 if __name__ == "__main__":
     torchtemplates()

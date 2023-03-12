@@ -16,7 +16,6 @@ File structure
         - data.py
         - model.py
         - train.py
-        - inference.py
         - utils.py
     - README.md
     - requirements.txt
