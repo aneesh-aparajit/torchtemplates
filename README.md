@@ -1,4 +1,6 @@
-# Torch Templates
+# torchtemplates
+
+[![Downloads](https://static.pepy.tech/personalized-badge/torchtemplates?period=total&units=international_system&left_color=blue&right_color=blue&left_text=Downloads)](https://pepy.tech/project/torchtemplates)
 
 - The file structure is vastly inspired from [madewithml.com](https://madewithml.com/) and many Kaggle Kernels from top kagglers.
 
